@@ -1,4 +1,4 @@
-pdi-android-pushnotifications
+Pentaho Data Integration Adroid Push Notifications
 =============================
 
-Plugin that proveide send push notifications from Pentaho Data Integration
+Plugin that provide send push notifications from Pentaho Data Integration
