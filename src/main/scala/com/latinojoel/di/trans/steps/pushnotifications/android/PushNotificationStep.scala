@@ -99,7 +99,7 @@ class PushNotificationStep(s: StepMeta, stepDataInterface: StepDataInterface, c:
     message.setTimeToLive(data.timeToLive)
     var i: Int = 0
     while (i < meta.getDataFieldPush.length) {
-      message.addData(meta.getFieldStream.apply(i), r.apply(data.valuenrs.apply(i)).toString())
+      message.addData(meta.getFieldStream.apply(i), getInputRowMeta().getString(r, data.valuenrs.apply(i)))
       i += 1
     }
 
