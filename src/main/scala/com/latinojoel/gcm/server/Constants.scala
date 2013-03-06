@@ -2,6 +2,7 @@ package com.latinojoel.gcm.server
 
 /**
  * Constants used on GCM service communication.
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  */
 package object Constants {
   /**
@@ -175,7 +176,7 @@ package object Constants {
    * JSON-only field sent by GCM when a message was successfully sent.
    */
   val JSON_MESSAGE_ID: String = "message_id";
-  
+
   def Constants() = {
     throw new UnsupportedOperationException();
   }

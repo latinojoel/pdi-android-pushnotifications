@@ -9,6 +9,7 @@ import java.lang.Integer
 
 /**
  * GCM message.
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  */
 @serializable
 class Message {

@@ -4,29 +4,7 @@ import java.lang.StringBuilder
 
 /**
  * Result of a GCM message request that returned HTTP status code 200.
- *
- * <p>
- * If the message is successfully created, the {@link #getMessageId()} returns
- * the message id and {@link #getErrorCodeName()} returns {@literal null};
- * otherwise, {@link #getMessageId()} returns {@literal null} and
- * {@link #getErrorCodeName()} returns the code of the error.
- *
- * <p>
- * There are cases when a request is accept and the message successfully
- * created, but GCM has a canonical registration id for that device. In this
- * case, the server should update the registration id to avoid rejected requests
- * in the future.
- *
- * <p>
- * In a nutshell, the workflow to handle a result is:
- * <pre>
- *   - Call {@link #getMessageId()}:
- *     - {@literal null} means error, call {@link #getErrorCodeName()}
- *     - non-{@literal null} means the message was created:
- *       - Call {@link #getCanonicalRegistrationId()}
- *         - if it returns {@literal null}, do nothing.
- *         - otherwise, update the server datastore with the new id.
- * </pre>
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  */
 @serializable
 class Result(builder: Result#Builder) {

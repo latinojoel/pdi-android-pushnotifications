@@ -5,6 +5,9 @@ import org.pentaho.di.trans.step.StepDataInterface
 import org.pentaho.di.core.row.RowMetaInterface
 import scala.collection.mutable.ListBuffer
 
+/**
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
+ */
 class PushNotificationStepData() extends BaseStepData() with StepDataInterface {
   var outputRowMeta: RowMetaInterface = _
   var insertRowMeta: RowMetaInterface = _

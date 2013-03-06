@@ -22,6 +22,9 @@ import org.pentaho.di.core.exception.KettleException
 import org.pentaho.di.core.row.ValueMeta
 import org.pentaho.di.core.RowMetaAndData
 
+/**
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
+ */
 class PushNotificationStep(s: StepMeta, stepDataInterface: StepDataInterface, c: Int, t: TransMeta, dis: Trans) extends BaseStep(s: StepMeta, stepDataInterface: StepDataInterface, c: Int, t: TransMeta, dis: Trans) with StepInterface {
   val PKG: Class[PushNotificationStepDialog] = classOf[PushNotificationStepDialog]
   var meta: PushNotificationStepMeta = _

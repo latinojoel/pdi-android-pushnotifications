@@ -46,6 +46,7 @@ import scala.collection.JavaConversions._
  * Helper class to send messages to the GCM service using an API Key.
  *
  * @param key API key obtained through the Google API Console.
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  */
 class Sender(APIKey: String) {
 
@@ -58,20 +59,11 @@ class Sender(APIKey: String) {
   /**
    * Sends a message to one device, retrying in case of unavailability.
    *
-   * <p>
-   * <strong>Note: </strong> this method uses exponential back-off to retry in
-   * case of service unavailability and hence could block the calling thread
-   * for many seconds.
-   *
    * @param message message to be sent, including the device's registration id.
    * @param registrationId device where the message will be sent.
    * @param retries number of retries in case of service unavailability errors.
    *
-   * @return result of the request (see its javadoc for more details).
-   *
-   * @throws IllegalArgumentException if registrationId is {@literal null}.
-   * @throws InvalidRequestException if GCM didn't returned a 200 or 5xx status.
-   * @throws IOException if message could not be sent.
+   * @return result of the request
    */
   def send(message: Message, registrationId: String, retries: Int, backoffDelay: Int): String = {
     var attempt: Int = 0
@@ -95,14 +87,7 @@ class Sender(APIKey: String) {
   }
 
   /**
-   * Sends a message without retrying in case of service unavailability. See
-   * {@link #send(Message, String, int)} for more info.
-   *
-   * @return result of the post, or {@literal null} if the GCM service was
-   *         unavailable or any network exception caused the request to fail.
-   *
-   * @throws InvalidRequestException if GCM didn't returned a 200 or 5xx status.
-   * @throws IllegalArgumentException if registrationId is {@literal null}.
+   * Sends a message without retrying in case of service unavailability.
    */
   def sendNoRetry(message: Message, registrationId: String): String = {
     val body: StringBuilder = newBody(PARAM_REGISTRATION_ID, registrationId)
@@ -173,38 +158,6 @@ class Sender(APIKey: String) {
       }
     }
     return responseBody;
-    //    var lines: Array[String] = responseBody.split("\n")
-    //    if (lines.length == 0 || lines.->(0).equals(""))
-    //      throw new IOException("Received empty response from GCM service.")
-    //
-    //    val firstLine: String = lines.apply(0)
-    //    var responseParts: Array[String] = split(firstLine)
-    //    var token: String = responseParts.apply(0)
-    //    var value: String = responseParts.apply(1)
-    //    if (token.equals(TOKEN_MESSAGE_ID)) {
-    //      val resultInit: Result = new Result(null)
-    //      var builder: Result#Builder = new resultInit.Builder().messageId(value)
-    //      // check for canonical registration id
-    //      if (lines.length > 1) {
-    //        val secondLine: String = lines.apply(1)
-    //        responseParts = split(secondLine)
-    //        token = responseParts.apply(0)
-    //        value = responseParts.apply(1)
-    //        if (token.equals(TOKEN_CANONICAL_REG_ID))
-    //          builder.canonicalRegistrationId(value)
-    //        else
-    //          logger.warning("Invalid response from GCM: " + responseBody)
-    //
-    //      }
-    //      val result: Result = builder.build()
-    //      if (logger.isLoggable(Level.FINE))
-    //        logger.fine("Message created succesfully (" + result + ")")
-    //      result
-    //    } else if (token.equals(TOKEN_ERROR)) {
-    //      val resultInit: Result = new Result(null)
-    //      new resultInit.Builder().errorCode(value).build()
-    //    } else
-    //      throw new IOException("Invalid response from GCM: " + responseBody)
   }
 
   def newIoException(responseBody: String, e: Exception): IOException = {

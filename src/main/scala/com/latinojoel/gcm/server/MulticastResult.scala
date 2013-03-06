@@ -5,7 +5,8 @@ import java.util.List
 import java.util.Collections
 
 /**
- * Result of a GCM multicast message request .
+ * Result of a GCM multicast message request.
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  */
 @serializable
 class MulticastResult(builder: MulticastResult#Builder) {

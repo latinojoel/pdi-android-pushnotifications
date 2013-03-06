@@ -48,6 +48,9 @@ import scala.collection.immutable.HashMap
 import org.pentaho.di.trans.step.StepMeta
 import java.util.SortedMap
 
+/**
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
+ */
 class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: TransMeta, sname: String) extends BaseStepDialog(parent: Shell, in: BaseStepMeta, transMeta: TransMeta, sname: String) with StepDialogInterface {
   val PKG: Class[PushNotificationStepDialog] = classOf[PushNotificationStepDialog]
   // List of ColumnInfo that should have the field names of the selected database table
@@ -55,7 +58,7 @@ class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: Tra
 
   var input: PushNotificationStepMeta = in.asInstanceOf[PushNotificationStepMeta]
   var wValCollapseKeyField, wTimeToLiveField, wRestrictedPackageField, wAPIKeyField, wRetriesNumberField, wDelayRetryNumberField: TextVar = _
-  var wJSONResponseField: Text = _
+  var wResponseField: Text = _
   var wFields: TableView = _
   var wGetFields, wDelayWhileIdleField, wDryRunField, wRetryingField: Button = _
   var fdGetFields: FormData = _
@@ -351,23 +354,23 @@ class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: Tra
     fdAPIKeyField.right = new FormAttachment(100, -margin)
     wAPIKeyField.setLayoutData(fdAPIKeyField)
 
-    //JSON response value
-    val wlJSONResponseField = new Label(wPropComp, SWT.RIGHT)
-    wlJSONResponseField.setText(BaseMessages.getString(PKG, "AndroidPushNotification.JSONResponseField.Label"))
-    props.setLook(wlJSONResponseField)
-    val fdlJSONResponseField: FormData = new FormData()
-    fdlJSONResponseField.left = new FormAttachment(0, -margin)
-    fdlJSONResponseField.top = new FormAttachment(wAPIKeyField, margin)
-    fdlJSONResponseField.right = new FormAttachment(middle, -2 * margin)
-    wlJSONResponseField.setLayoutData(fdlJSONResponseField)
+    // response value
+    val wlResponseField = new Label(wPropComp, SWT.RIGHT)
+    wlResponseField.setText(BaseMessages.getString(PKG, "AndroidPushNotification.ResponseField.Label"))
+    props.setLook(wlResponseField)
+    val fdlResponseField: FormData = new FormData()
+    fdlResponseField.left = new FormAttachment(0, -margin)
+    fdlResponseField.top = new FormAttachment(wAPIKeyField, margin)
+    fdlResponseField.right = new FormAttachment(middle, -2 * margin)
+    wlResponseField.setLayoutData(fdlResponseField)
 
-    wJSONResponseField = new Text(wPropComp, SWT.SINGLE | SWT.LEFT | SWT.BORDER)
-    props.setLook(wJSONResponseField)
-    val fdJSONResponseField: FormData = new FormData()
-    fdJSONResponseField.left = new FormAttachment(middle, -margin)
-    fdJSONResponseField.top = new FormAttachment(wAPIKeyField, margin)
-    fdJSONResponseField.right = new FormAttachment(100, -margin)
-    wJSONResponseField.setLayoutData(fdJSONResponseField)
+    wResponseField = new Text(wPropComp, SWT.SINGLE | SWT.LEFT | SWT.BORDER)
+    props.setLook(wResponseField)
+    val fdResponseField: FormData = new FormData()
+    fdResponseField.left = new FormAttachment(middle, -margin)
+    fdResponseField.top = new FormAttachment(wAPIKeyField, margin)
+    fdResponseField.right = new FormAttachment(100, -margin)
+    wResponseField.setLayoutData(fdResponseField)
 
     // Push encoding value
     val wlEncoding: Label = new Label(wPropComp, SWT.RIGHT);
@@ -375,7 +378,7 @@ class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: Tra
     props.setLook(wlEncoding)
     val fdlEncoding: FormData = new FormData()
     fdlEncoding.left = new FormAttachment(0, -margin)
-    fdlEncoding.top = new FormAttachment(wJSONResponseField, margin)
+    fdlEncoding.top = new FormAttachment(wResponseField, margin)
     fdlEncoding.right = new FormAttachment(middle, -2 * margin)
     wlEncoding.setLayoutData(fdlEncoding)
 
@@ -385,7 +388,7 @@ class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: Tra
     wEncoding.addModifyListener(lsMod)
     val fdEncoding: FormData = new FormData()
     fdEncoding.left = new FormAttachment(middle, -margin)
-    fdEncoding.top = new FormAttachment(wJSONResponseField, margin)
+    fdEncoding.top = new FormAttachment(wResponseField, margin)
     fdEncoding.right = new FormAttachment(100, -margin)
     wEncoding.setLayoutData(fdEncoding)
 
@@ -578,8 +581,8 @@ class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: Tra
     wDryRunField.setSelection(input.isDryRun)
     if (input.getApiKey ne null)
       wAPIKeyField.setText(input.getApiKey)
-    if (input.getJsonResponseField != null)
-      wJSONResponseField.setText(input.getJsonResponseField)
+    if (input.getResponseField != null)
+      wResponseField.setText(input.getResponseField)
     if (input.getPushEncoding ne null)
       wEncoding.setText(input.getPushEncoding)
     wRetryingField.setSelection(input.isRetrying)
@@ -624,9 +627,9 @@ class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: Tra
         mb.setMessage(BaseMessages.getString(PKG, "AndroidPushNotification.APIKeyError.DialogMessage"))
         mb.setText(BaseMessages.getString(PKG, "System.Dialog.Error.Title"))
         mb.open()
-      } else if (input.getJsonResponseField == null || input.getJsonResponseField.equals("")) {
+      } else if (input.getResponseField == null || input.getResponseField.equals("")) {
         val mb: MessageBox = new MessageBox(shell, SWT.OK | SWT.ICON_ERROR)
-        mb.setMessage(BaseMessages.getString(PKG, "AndroidPushNotification.JsonResponseFieldError.DialogMessage"))
+        mb.setMessage(BaseMessages.getString(PKG, "AndroidPushNotification.ResponseFieldError.DialogMessage"))
         mb.setText(BaseMessages.getString(PKG, "System.Dialog.Error.Title"))
         mb.open()
       } else if (input.getPushEncoding == null || input.getPushEncoding.equals("")) {
@@ -649,7 +652,7 @@ class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: Tra
     input.setRestrictedPackageName(wRestrictedPackageField.getText())
     input.setDryRun(wDryRunField.getSelection())
     input.setApiKey(wAPIKeyField.getText())
-    input.setJsonResponseField(wJSONResponseField.getText())
+    input.setResponseField(wResponseField.getText())
     input.setPushEncoding(wEncoding.getText())
     input.setRetrying(wRetryingField.getSelection())
     input.setRetryNumber(wRetriesNumberField.getText())

@@ -30,6 +30,9 @@ import scala.collection.mutable.ListBuffer
 import java.util.List
 import org.pentaho.di.core.CheckResultInterface
 
+/**
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
+ */
 class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
   def PKG: Class[PushNotificationStepMeta] = classOf[PushNotificationStepMeta] // for i18n purposes
   private var registrationId: String = _
@@ -43,7 +46,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
   /** Data fields to send push notification */
   private var dataFieldPush: ListBuffer[String] = _
   private var apiKey: String = _
-  private var jsonResponseField: String = _
+  private var ResponseField: String = _
   private var pushEncoding: String = _
   private var retrying: Boolean = false
   private var retryNumber: String = _
@@ -76,8 +79,8 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
   def getApiKey(): String = this.apiKey
   def setApiKey(apiKey: String) = this.apiKey = apiKey
 
-  def getJsonResponseField(): String = this.jsonResponseField
-  def setJsonResponseField(jsonResponseField: String) = this.jsonResponseField = jsonResponseField
+  def getResponseField(): String = this.ResponseField
+  def setResponseField(ResponseField: String) = this.ResponseField = ResponseField
 
   def getPushEncoding(): String = this.pushEncoding
   def setPushEncoding(pushEncoding: String) = this.pushEncoding = pushEncoding
@@ -100,7 +103,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
     retval.append("    " + XMLHandler.addTagValue("restrictedPackageName", restrictedPackageName))
     retval.append("    " + XMLHandler.addTagValue("dryRun", dryRun))
     retval.append("    " + XMLHandler.addTagValue("apiKey", apiKey))
-    retval.append("    " + XMLHandler.addTagValue("jsonResponseField", jsonResponseField))
+    retval.append("    " + XMLHandler.addTagValue("ResponseField", ResponseField))
     retval.append("    " + XMLHandler.addTagValue("pushEncoding", pushEncoding))
     retval.append("    " + XMLHandler.addTagValue("retrying", retrying))
     retval.append("    " + XMLHandler.addTagValue("retryNumber", retryNumber))
@@ -129,7 +132,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
       restrictedPackageName = rep.getStepAttributeString(id_step, "restrictedPackageName")
       dryRun = rep.getStepAttributeBoolean(id_step, "dryRun")
       apiKey = rep.getStepAttributeString(id_step, "apiKey")
-      jsonResponseField = rep.getStepAttributeString(id_step, "jsonResponseField")
+      ResponseField = rep.getStepAttributeString(id_step, "ResponseField")
       pushEncoding = rep.getStepAttributeString(id_step, "pushEncoding")
       retrying = rep.getStepAttributeBoolean(id_step, "retrying")
       retryNumber = rep.getStepAttributeString(id_step, "retryNumber")
@@ -160,7 +163,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
       rep.saveStepAttribute(id_transformation, id_step, "restrictedPackageName", restrictedPackageName)
       rep.saveStepAttribute(id_transformation, id_step, "dryRun", dryRun)
       rep.saveStepAttribute(id_transformation, id_step, "apiKey", apiKey)
-      rep.saveStepAttribute(id_transformation, id_step, "jsonResponseField", jsonResponseField)
+      rep.saveStepAttribute(id_transformation, id_step, "ResponseField", ResponseField)
       rep.saveStepAttribute(id_transformation, id_step, "pushEncoding", pushEncoding)
       rep.saveStepAttribute(id_transformation, id_step, "retrying", retrying)
       rep.saveStepAttribute(id_transformation, id_step, "retryNumber", retryNumber)
@@ -179,9 +182,9 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
   }
 
   override def getFields(r: RowMetaInterface, origin: String, info: Array[RowMetaInterface], nextStep: StepMeta, space: VariableSpace) = {
-    // Just add the json response field...
-    if (jsonResponseField != null) {
-      val key: ValueMetaInterface = new ValueMeta(space.environmentSubstitute(jsonResponseField), ValueMetaInterface.TYPE_STRING);
+    // Just add the  response field...
+    if (ResponseField != null) {
+      val key: ValueMetaInterface = new ValueMeta(space.environmentSubstitute(ResponseField), ValueMetaInterface.TYPE_STRING);
       key.setOrigin(origin);
       r.addValueMeta(key);
     }
@@ -200,7 +203,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
       restrictedPackageName = XMLHandler.getTagValue(stepnode, "restrictedPackageName")
       dryRun = "Y".equalsIgnoreCase(XMLHandler.getTagValue(stepnode, "dryRun"))
       apiKey = XMLHandler.getTagValue(stepnode, "apiKey")
-      jsonResponseField = XMLHandler.getTagValue(stepnode, "jsonResponseField")
+      ResponseField = XMLHandler.getTagValue(stepnode, "ResponseField")
       pushEncoding = XMLHandler.getTagValue(stepnode, "pushEncoding")
       retrying = "Y".equalsIgnoreCase(XMLHandler.getTagValue(stepnode, "retrying"))
       retryNumber = XMLHandler.getTagValue(stepnode, "retryNumber")
@@ -230,7 +233,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
     this.delayWhileIdle = false
     this.dryRun = false
     this.fieldStream = new ListBuffer[String]
-    this.jsonResponseField = "jsonResponse"
+    this.ResponseField = "Response"
     this.pushEncoding = "UTF-8"
     this.registrationId = ""
     this.restrictedPackageName = ""

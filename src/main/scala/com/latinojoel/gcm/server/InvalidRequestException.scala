@@ -4,6 +4,7 @@ package com.latinojoel.gcm.server
  * Exception thrown when GCM returned an error due to an invalid request.
  * <p>
  * This is equivalent to GCM posts that return an HTTP error different of 200.
+ * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  */
 class InvalidRequestException(message: String, nestedException: Throwable) extends Exception(message, nestedException) {
 
