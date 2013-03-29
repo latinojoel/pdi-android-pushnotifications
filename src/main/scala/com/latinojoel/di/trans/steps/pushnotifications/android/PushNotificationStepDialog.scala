@@ -714,8 +714,6 @@ class PushNotificationStepDialog(parent: Shell, in: BaseStepMeta, transMeta: Tra
     val keySet: scala.collection.Set[String] = fields.keySet
     val fieldNames: Array[String] = keySet.toArray
     Const.sortStrings(fieldNames)
-    //    val columnInfo: ColumnInfo = ciFields.apply(1)
-    //    columnInfo.setComboValues(fieldNames)
     ciFields.apply(1).setComboValues(fieldNames)
   }
 
