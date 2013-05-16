@@ -40,6 +40,14 @@ After installed plugin, you can find the step on Utility category of transformat
 * **Retries number** - Number of retries
 * **Delay before last retry** - Delay between of retries.
 
+At this moment, PDI Manager is configured to receive four properties inside the push message:
+* Status
+* Project
+* Date
+* Data. 
+
+Use the follow API Key: AIzaSyAh7Nf-N7bE4xIwsVb7nk4mmls_yEQwZQA
+
 
 Interested Links
 =======
