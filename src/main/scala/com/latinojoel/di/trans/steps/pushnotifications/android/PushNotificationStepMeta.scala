@@ -123,7 +123,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
     retval.toString()
   }
 
-  def readRep(rep: Repository, id_step: ObjectId, databases: List[DatabaseMeta], counters: Map[String, Counter]) = {
+  override def readRep(rep: Repository, id_step: ObjectId, databases: List[DatabaseMeta], counters: Map[String, Counter]) = {
     try {
       registrationId = rep.getStepAttributeString(id_step, "registrationId")
       collapseKey = rep.getStepAttributeString(id_step, "collapseKey")
@@ -154,7 +154,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
     }
   }
 
-  def saveRep(rep: Repository, id_transformation: ObjectId, id_step: ObjectId) = {
+  override def saveRep(rep: Repository, id_transformation: ObjectId, id_step: ObjectId) = {
     try {
       rep.saveStepAttribute(id_transformation, id_step, "registrationId", registrationId)
       rep.saveStepAttribute(id_transformation, id_step, "collapseKey", collapseKey)
@@ -192,7 +192,7 @@ class PushNotificationStepMeta extends BaseStepMeta with StepMetaInterface {
 
   override def clone(): Object = super.clone()
 
-  def loadXML(stepnode: Node, databases: List[DatabaseMeta], counters: Map[String, Counter]) = readData(stepnode)
+  override def loadXML(stepnode: Node, databases: List[DatabaseMeta], counters: Map[String, Counter]) = readData(stepnode)
 
   def readData(stepnode: Node) = {
     try {
