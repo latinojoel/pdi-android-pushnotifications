@@ -1,6 +1,7 @@
 Pentaho Data Integration Android Push Notifications
 =============================
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/latinojoel/pdi-android-pushnotifications/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/d849a18c46ab364013deb6ddec98bc48 "githalytics.com")](http://githalytics.com/latinojoel/pdi-android-pushnotifications)
 
 This is a plugin that allows to you send push notifications from **Pentaho Data Integration** to any **android** application that enable GCM service. This plugin is written in **Scala**!
@@ -61,5 +62,4 @@ Interested Links
 * [Joel Latino Author - Blog](http://joel-latino.blogspot.com/)
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/latinojoel/pdi-android-pushnotifications/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
