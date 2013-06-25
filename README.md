@@ -59,3 +59,7 @@ Interested Links
 * [Joel Latino Author - About](https://about.me/latinojoel)
 * [Joel Latino Author - Linkedin](http://pt.linkedin.com/in/latinojoel)
 * [Joel Latino Author - Blog](http://joel-latino.blogspot.com/)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/latinojoel/pdi-android-pushnotifications/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
