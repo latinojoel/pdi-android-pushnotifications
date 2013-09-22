@@ -142,7 +142,7 @@ public class PushNotificationStep extends BaseStep implements StepInterface {
         messageBuilder.restrictedPackageName(data.restrictedPackageName);
         messageBuilder.timeToLive(data.timeToLive);
         for (int i = 0; i < meta.getDataFieldPush().size(); i++) {
-            messageBuilder.addData(meta.getFieldStream().get(i), getInputRowMeta().getString(r, data.valuenrs.get(i)));
+            messageBuilder.addData(meta.getDataFieldPush().get(i), getInputRowMeta().getString(r, data.valuenrs.get(i)));
         }
 
         final Sender sender = new Sender(data.apiKey);
