@@ -1,6 +1,6 @@
 Pentaho Data Integration Android Push Notifications
 =============================
-This is a plugin that allows to you send push notifications from **Pentaho Data Integration** to any **android** application that enable GCM service. This plugin is written in **Scala**!
+This is a plugin that allows to you send push notifications from **Pentaho Data Integration** to any **android** application that enable GCM service.
 The motivation for developed this plugin is for you, as ETL Developer, receive a quickly notifications about state of ETL executions in any place (than faster email), you can use my app [PDI Manager Android App](https://play.google.com/store/apps/details?id=com.latinojoel.pdimanager). However, this plugin can be use for other's scenarios.
 
 

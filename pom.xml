@@ -1,11 +1,10 @@
-<project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.latinojoel.di.trans.steps.pushnotifications.android</groupId>
 	<artifactId>push.notification.step</artifactId>
-	<version>0.9.0</version>
+	<version>1.0.0</version>
 	<name>${project.artifactId}</name>
 	<description>Plugin that proveide send push notifications from Pentaho Data Integration</description>
 	<inceptionYear>2012</inceptionYear>
@@ -25,29 +24,12 @@
 		<scala.tools.version>2.8.0</scala.tools.version>
 		<kettle.version>TRUNK-SNAPSHOT</kettle.version>
 	</properties>
+
 	<dependencies>
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>${scala.version}</version>
-		</dependency>
-		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.scala-tools.testing</groupId>
-			<artifactId>specs_${scala.tools.version}</artifactId>
-			<version>1.6.5</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest</artifactId>
-			<version>1.2</version>
+			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- Pentaho dependencies -->
@@ -93,42 +75,28 @@
 			<version>1.8.5</version>
 		</dependency>
 	</dependencies>
+
 	<build>
-		<sourceDirectory>src/main/scala</sourceDirectory>
-		<testSourceDirectory>src/test/scala</testSourceDirectory>
 		<plugins>
 			<plugin>
-				<groupId>org.scala-tools</groupId>
-				<artifactId>maven-scala-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
 				<executions>
 					<execution>
+						<phase>package</phase>
 						<goals>
-							<goal>compile</goal>
-							<!-- goal>testCompile</goal -->
+							<goal>checkstyle</goal>
 						</goals>
-						<configuration>
-							<args>
-								<arg>-make:transitive</arg>
-								<arg>-dependencyfile</arg>
-								<arg>${project.build.directory}/.scala_dependencies</arg>
-							</args>
-						</configuration>
+					</execution>
+					<execution>
+						<id>check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.6</version>
 				<configuration>
-					<useFile>false</useFile>
-					<disableXmlReport>true</disableXmlReport>
-					<!-- If you have classpath issue like NoDefClassError,... -->
-					<!-- useManifestOnlyJar>false</useManifestOnlyJar -->
-					<includes>
-						<include>**/*Test.*</include>
-						<include>**/*Suite.*</include>
-					</includes>
+					<configLocation>checkstyle.xml</configLocation>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -149,19 +117,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>scala-tools.org</id>
-			<name>Scala-Tools Maven2 Repository</name>
-			<url>https://oss.sonatype.org/content/groups/scala-tools/</url>
-		</pluginRepository>
-	</pluginRepositories>
+
 	<repositories>
-		<repository>
-			<id>scala-tools.org</id>
-			<name>Scala-Tools Maven2 Repository</name>
-			<url>https://oss.sonatype.org/content/groups/scala-tools/</url>
-		</repository>
 		<repository>
 			<id>PentahoRepo</id>
 			<name>Pentaho repository</name>
