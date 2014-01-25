@@ -42,13 +42,20 @@ After installed plugin, you can find the step on Utility category of transformat
 * **Retries number** - Number of retries
 * **Delay before last retry** - Delay between of retries.
 
+
+
+PDI Manager Android App
+=======================
 At this moment, PDI Manager is configured to receive four properties inside the push message:
 * Status
 * Project
 * Date
 * Data. 
 
-Use the follow API Key: AIzaSyAh7Nf-N7bE4xIwsVb7nk4mmls_yEQwZQA
+Use the follow **API Key**: AIzaSyAh7Nf-N7bE4xIwsVb7nk4mmls_yEQwZQA
+
+**How you get your Registragion ID**
+In the main screen you should be click on menu button and choose the Registration ID menu option. In the new Registration ID screen, you can share your registration ID for use it on android push notificatio step.
 
 
 Interested Links
