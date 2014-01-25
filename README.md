@@ -1,4 +1,4 @@
-Pentaho Data Integration Android Push Notifications
+![Android Push Notification icon](https://raw.github.com/latinojoel/pdi-android-pushnotifications/master/resources/push.png) Pentaho Data Integration Android Push Notifications
 =============================
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/latinojoel/pdi-android-pushnotifications/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
@@ -54,8 +54,12 @@ At this moment, PDI Manager is configured to receive four properties inside the 
 
 Use the follow **API Key**: AIzaSyAh7Nf-N7bE4xIwsVb7nk4mmls_yEQwZQA
 
+
 **How you get your Registragion ID**
+
 In the main screen you should be click on menu button and choose the Registration ID menu option. In the new Registration ID screen, you can share your registration ID for use it on android push notificatio step.
+![Get Registragion ID](http://4.bp.blogspot.com/-4yoRztT-RDg/UaObXcjbeVI/AAAAAAAAADM/5bIM3CHxcWw/s1600/2013-02-06+00.07.44.png)
+
 
 
 Interested Links
