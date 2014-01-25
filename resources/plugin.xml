@@ -3,6 +3,6 @@
   tooltip="Is capable to send push notifications to android devices" category="Utility" 
   classname="com.latinojoel.di.trans.steps.pushnotifications.android.PushNotificationStepMeta">
 	<libraries>
-		<library name="push.notification.step-1.0.0.jar"/>
+		<library name="lib/push.notification.step-1.0.0.jar"/>
 	</libraries>
 </plugin>
