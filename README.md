@@ -1,4 +1,4 @@
-![Android Push Notification icon](https://raw.github.com/latinojoel/pdi-android-pushnotifications/master/resources/push.png) Pentaho Data Integration Android Push Notifications
+![Android Push Notification icon](https://raw.githubusercontent.com/latinojoel/pdi-android-pushnotifications/master/src/main/resources/com/latinojoel/di/trans/steps/pushnotifications/android/push.png) Pentaho Data Integration Android Push Notifications
 =============================
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/latinojoel/pdi-android-pushnotifications/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
