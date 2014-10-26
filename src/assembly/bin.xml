@@ -5,7 +5,6 @@
 	<formats>
 		<format>dir</format>
 		<format>zip</format>
-		<format>tar.gz</format>
 	</formats>
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
@@ -14,13 +13,11 @@
 			<outputDirectory>${plugin.name}</outputDirectory>
 			<includes>
 				<include>version.xml</include>
-				<include>plugin.xml</include>
-				<include>push.png</include>
 			</includes>
 		</fileSet>
 		<fileSet>
 			<directory>target</directory>
-			<outputDirectory>${plugin.name}/lib</outputDirectory>
+			<outputDirectory>${plugin.name}</outputDirectory>
 			<includes>
 				<include>push.notification.step-*.jar</include>
 			</includes>

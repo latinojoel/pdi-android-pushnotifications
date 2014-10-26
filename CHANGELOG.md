@@ -1,5 +1,9 @@
 # Pentaho Data Integration Android Push Notifications
 
+## 1.0.1
+* Using Annotations
+* Error handling
+
 ## 1.0.0
 * Check code style
 * Bugs fixed

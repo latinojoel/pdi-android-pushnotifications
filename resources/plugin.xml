@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<plugin id="AndroidPushNotification" iconfile="push.png" description="Android Push Notification" 
-  tooltip="Is capable to send push notifications to android devices" category="Utility" 
-  classname="com.latinojoel.di.trans.steps.pushnotifications.android.PushNotificationStepMeta">
-	<libraries>
-		<library name="lib/push.notification.step-1.0.0.jar"/>
-	</libraries>
-</plugin>

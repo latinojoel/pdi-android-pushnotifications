@@ -4,7 +4,7 @@
 
 	<groupId>com.latinojoel.di.trans.steps.pushnotifications.android</groupId>
 	<artifactId>push.notification.step</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>${project.artifactId}</name>
 	<description>Plugin that provide send push notifications from Pentaho Data Integration</description>
 	<inceptionYear>2012</inceptionYear>
