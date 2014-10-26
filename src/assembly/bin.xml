@@ -19,7 +19,7 @@
 			<directory>target</directory>
 			<outputDirectory>${plugin.name}</outputDirectory>
 			<includes>
-				<include>push.notification.step-*.jar</include>
+				<include>android.push.notification.step-*.jar</include>
 			</includes>
 		</fileSet>
 	</fileSets>
