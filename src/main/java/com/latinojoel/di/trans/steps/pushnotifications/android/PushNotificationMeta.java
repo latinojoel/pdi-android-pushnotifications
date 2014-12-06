@@ -40,6 +40,7 @@ import org.pentaho.di.trans.step.StepDataInterface;
 import org.pentaho.di.trans.step.StepDialogInterface;
 import org.pentaho.di.trans.step.StepInterface;
 import org.pentaho.di.trans.step.StepMeta;
+import org.pentaho.di.trans.step.StepMetaInjectionInterface;
 import org.pentaho.di.trans.step.StepMetaInterface;
 import org.w3c.dom.Node;
 
@@ -468,6 +469,13 @@ public class PushNotificationMeta extends BaseStepMeta implements StepMetaInterf
    */
   public boolean supportsErrorHandling() {
     return true;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public StepMetaInjectionInterface getStepMetaInjectionInterface() {
+    return new PushNotificationMetaInjection(this);
   }
 
   /**

@@ -636,7 +636,7 @@ public class PushNotificationDialog extends BaseStepDialog implements StepDialog
    * Read data and place it in the dialog.
    */
   public void getData() {
-    wRegIdField.setText(input.getRegistrationId());
+    wRegIdField.setText(Const.NVL(input.getRegistrationId(), ""));
     if (input.getCollapseKey() != null) {
       wValCollapseKeyField.setText(input.getCollapseKey());
     }
