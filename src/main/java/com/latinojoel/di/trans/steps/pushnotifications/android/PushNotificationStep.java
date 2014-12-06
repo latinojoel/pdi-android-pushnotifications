@@ -101,7 +101,11 @@ public class PushNotificationStep extends BaseStep implements StepInterface {
         }
       }
     } catch (Exception e) {
-      return false;
+      if (getStepMeta().isDoingErrorHandling()) {
+        putError(getInputRowMeta(), r, 1L, e.toString(), null, "PUSHAND001");
+      } else {
+        new KettleStepException(e);
+      }
     }
     return true;
   }
@@ -161,8 +165,7 @@ public class PushNotificationStep extends BaseStep implements StepInterface {
             rowMeta.getString(r, data.indexOfRegistrationIdField));
       }
     } catch (IOException e) {
-      logError("Unexpected error : " + e.toString());
-      logError(Const.getStackTracker(e));
+      new KettleStepException(e);
     }
     return result;
 

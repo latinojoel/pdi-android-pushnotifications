@@ -464,6 +464,13 @@ public class PushNotificationStepMeta extends BaseStepMeta implements StepMetaIn
   }
 
   /**
+   * {@inheritDoc}
+   */
+  public boolean supportsErrorHandling() {
+    return true;
+  }
+
+  /**
    * Get the Step dialog, needs for configure the step.
    * 
    * @param shell the shell.
