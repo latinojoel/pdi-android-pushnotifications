@@ -24,7 +24,7 @@ import org.pentaho.di.trans.step.StepDataInterface;
  * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  * @since 1.0.1
  */
-public class PushNotificationStepData extends BaseStepData implements StepDataInterface {
+public class PushNotificationData extends BaseStepData implements StepDataInterface {
   RowMetaInterface outputRowMeta = null;
   RowMetaInterface insertRowMeta = null;
   List<Integer> valuenrs = null;

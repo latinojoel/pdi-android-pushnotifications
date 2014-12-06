@@ -57,9 +57,9 @@ import org.w3c.dom.Node;
     i18nPackageName = "com.latinojoel.di.trans.steps.pushnotifications.android",
     casesUrl = "https://github.com/latinojoel", documentationUrl = "https://github.com/latinojoel",
     forumUrl = "https://github.com/latinojoel")
-public class PushNotificationStepMeta extends BaseStepMeta implements StepMetaInterface {
+public class PushNotificationMeta extends BaseStepMeta implements StepMetaInterface {
   /** for i18n purposes. **/
-  private static final Class<?> PKG = PushNotificationStepMeta.class;
+  private static final Class<?> PKG = PushNotificationMeta.class;
 
   private String registrationId = null;
   private String collapseKey = null;
@@ -481,7 +481,7 @@ public class PushNotificationStepMeta extends BaseStepMeta implements StepMetaIn
    */
   public StepDialogInterface getDialog(Shell shell, StepMetaInterface meta, TransMeta transMeta,
       String name) {
-    return new PushNotificationStepDialog(shell, (BaseStepMeta) meta, transMeta, name);
+    return new PushNotificationDialog(shell, (BaseStepMeta) meta, transMeta, name);
   }
 
   /**
@@ -498,7 +498,7 @@ public class PushNotificationStepMeta extends BaseStepMeta implements StepMetaIn
   public StepInterface getStep(StepMeta stepMeta, StepDataInterface stepDataInterface, int cnr,
       TransMeta transMeta,
       Trans disp) {
-    return new PushNotificationStep(stepMeta, stepDataInterface, cnr, transMeta, disp);
+    return new PushNotification(stepMeta, stepDataInterface, cnr, transMeta, disp);
   }
 
   /**
@@ -509,7 +509,7 @@ public class PushNotificationStepMeta extends BaseStepMeta implements StepMetaIn
    * @return The appropriate StepDataInterface class.
    */
   public StepDataInterface getStepData() {
-    return new PushNotificationStepData();
+    return new PushNotificationData();
   }
 
 }

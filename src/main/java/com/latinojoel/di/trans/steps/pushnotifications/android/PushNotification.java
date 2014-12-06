@@ -40,14 +40,14 @@ import com.latinojoel.gcm.server.Sender;
  * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  * @since 1.0.1
  */
-public class PushNotificationStep extends BaseStep implements StepInterface {
+public class PushNotification extends BaseStep implements StepInterface {
 
   /** for i18n purposes. **/
-  private static final Class<?> PKG = PushNotificationStep.class;
-  private PushNotificationStepMeta meta;
-  private PushNotificationStepData data;
+  private static final Class<?> PKG = PushNotification.class;
+  private PushNotificationMeta meta;
+  private PushNotificationData data;
 
-  public PushNotificationStep(
+  public PushNotification(
       StepMeta s, StepDataInterface stepDataInterface, int c, TransMeta t, Trans dis) {
     super(s, stepDataInterface, c, t, dis);
   }
@@ -59,8 +59,8 @@ public class PushNotificationStep extends BaseStep implements StepInterface {
    */
   @Override
   public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException {
-    this.meta = (PushNotificationStepMeta) smi;
-    this.data = (PushNotificationStepData) sdi;
+    this.meta = (PushNotificationMeta) smi;
+    this.data = (PushNotificationData) sdi;
 
     final Object[] r = getRow();
     if (r == null) {
@@ -70,7 +70,7 @@ public class PushNotificationStep extends BaseStep implements StepInterface {
     try {
       if (first) {
         first = false;
-        data.outputRowMeta = super.getInputRowMeta();
+        data.outputRowMeta = super.getInputRowMeta().clone();
         data.nrPrevFields = data.outputRowMeta.size();
         meta.getFields(data.outputRowMeta, getStepname(), null, null, this);
 
@@ -176,8 +176,8 @@ public class PushNotificationStep extends BaseStep implements StepInterface {
    */
   @Override
   public boolean init(StepMetaInterface smi, StepDataInterface sdi) {
-    meta = (PushNotificationStepMeta) smi;
-    data = (PushNotificationStepData) sdi;
+    meta = (PushNotificationMeta) smi;
+    data = (PushNotificationData) sdi;
 
     if (super.init(smi, sdi)) {
       if (meta.getTimeToLive() != null) {

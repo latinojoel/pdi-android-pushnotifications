@@ -68,15 +68,15 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
  * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
  * @since 1.0.1
  */
-public class PushNotificationStepDialog extends BaseStepDialog implements StepDialogInterface {
+public class PushNotificationDialog extends BaseStepDialog implements StepDialogInterface {
 
   /** for i18n purposes. **/
-  private static final Class<?> PKG = PushNotificationStepDialog.class;
+  private static final Class<?> PKG = PushNotificationDialog.class;
 
   /** List of ColumnInfo that should have the field names of the selected database table. */
   final List<ColumnInfo> tableFieldColumns = new ArrayList<ColumnInfo>();
 
-  private PushNotificationStepMeta input;
+  private PushNotificationMeta input;
   private TextVar wValCollapseKeyField, wTimeToLiveField, wRestrictedPackageField, wAPIKeyField,
       wRetriesNumberField,
       wDelayRetryNumberField = null;
@@ -92,10 +92,10 @@ public class PushNotificationStepDialog extends BaseStepDialog implements StepDi
   private boolean gotEncodings, gotPreviousFields = false;
   private Map<String, Integer> inputFields = new HashMap<String, Integer>();
 
-  public PushNotificationStepDialog(Shell parent, BaseStepMeta in, TransMeta transMeta,
+  public PushNotificationDialog(Shell parent, BaseStepMeta in, TransMeta transMeta,
       String sname) {
     super(parent, in, transMeta, sname);
-    this.input = (PushNotificationStepMeta) in;
+    this.input = (PushNotificationMeta) in;
   }
 
   /**
@@ -734,7 +734,7 @@ public class PushNotificationStepDialog extends BaseStepDialog implements StepDi
    * 
    * @param info the push notification step meta data.
    */
-  public void getInfo(PushNotificationStepMeta info) {
+  public void getInfo(PushNotificationMeta info) {
     input.setRegistrationId(wRegIdField.getText());
     input.setCollapseKey(wValCollapseKeyField.getText());
     input.setDelayWhileIdle(wDelayWhileIdleField.getSelection());
