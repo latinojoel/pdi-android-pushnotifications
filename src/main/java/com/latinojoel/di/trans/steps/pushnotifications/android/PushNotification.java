@@ -135,7 +135,7 @@ public class PushNotification extends BaseStep implements StepInterface {
       if (data.indexOfRegistrationIdField < 0) {
         final String message =
             "Unable to find table name field [" + realRegistrationId + "] in input row";
-        logError(message);
+        // logError(message);
         throw new KettleStepException(message);
       }
     }
