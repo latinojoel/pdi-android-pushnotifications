@@ -71,6 +71,3 @@ Interested Links
 * [Joel Latino Author - Linkedin](http://pt.linkedin.com/in/latinojoel)
 * [Joel Latino Author - Blog](http://joel-latino.blogspot.com/)
 
-
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/d849a18c46ab364013deb6ddec98bc48 "githalytics.com")](http://githalytics.com/latinojoel/pdi-android-pushnotifications)
